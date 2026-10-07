@@ -28,7 +28,7 @@ class ChannelsFirst(gym.ObservationWrapper):
 
 class Sampler:
     # Sample transitions from gymnasium type environments
-    def __init__(self, env, device='cpu'):
+    def __init__(self, env, device='cpu', seed=None):
         self.curr_rollout = []
         self.policy = None
         self.env = env
@@ -39,10 +39,12 @@ class Sampler:
         self.total_step = 0
         self.Trans = namedtuple('Trans', 'obs act rwd terminated truncated nobs nact')  # order must match yield below
         self.device = device
+        self.seed = seed  # seeds the environment on the first reset only
 
     def _rollout(self):
         # Generates SARSA type transitions until episode's end
-        obs, _ = self.env.reset()
+        obs, _ = self.env.reset(seed=self.seed)
+        self.seed = None
         act, entr = self.policy(obs)
         done = False
         step = 0

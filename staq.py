@@ -323,8 +323,10 @@ def run(logging_path, env_name='CartPole-v1', seed=0, timesteps=5_000_000, trans
 
     s_dim = env.observation_space.shape if network_type == "cnn" else env.observation_space.shape[0]
     n_act = env.action_space.n
-    sampler = Sampler(env)
-    sampler_eval = Sampler(env_eval)
+    # Distinct seeds for the training and evaluation environments, derived from the run's seed
+    train_seed, eval_seed = np.random.SeedSequence(seed).generate_state(2).tolist()
+    sampler = Sampler(env, seed=train_seed)
+    sampler_eval = Sampler(env_eval, seed=eval_seed)
 
     print('logging path', logging_path)
     logger = SummaryWriter(logging_path)
@@ -496,6 +498,7 @@ def run(logging_path, env_name='CartPole-v1', seed=0, timesteps=5_000_000, trans
         progress_bar.update(trans_per_iter)
 
     progress_bar.close()
+    logger.close()
 
 if __name__ == '__main__':
     argp = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)

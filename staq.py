@@ -278,7 +278,7 @@ def update_target(sources, targets=None, tau=None, update_type=None):
 
 def run(logging_path, env_name='CartPole-v1', seed=0, timesteps=5_000_000, trans_per_iter=5000, n_ensemble=2, mode='mean',
         hidden_width=256, kl_weight=20., init_ew=2.0, final_ew=0.4, nb_hidden=2, device='cuda', l2_weight=0.0,
-        memory_size=300, udr=1., rwd_scale=10., w_correction=1, rep_mem_size=50_000, n_eval_episodes=10, eval_interval=100_000,
+        memory_size=300, udr=1., rwd_scale=10., w_correction=1, rep_mem_size=50_000, n_eval_episodes=25, eval_interval=100_000,
         lr=1e-4, batch_size=256, target_type='hard', hard_target_steps=200, soft_target_polyak=0.005,
         init_eps=0.05, final_eps=0.05, end_decay=500_000):
     torch.set_num_threads(2)
@@ -524,7 +524,7 @@ if __name__ == '__main__':
     argp.add_argument('--kl-weight', type=float, default=20., help='KL weight.')
     argp.add_argument('--rwd-scale', type=float, default=10., help='Reward scale.')
     argp.add_argument('--udr', type=float, default=1., help='Update-to-data ratio')
-    argp.add_argument('--n-eval-episodes', type=int, default=10, help='Num episodes for policy benchmark.')
+    argp.add_argument('--n-eval-episodes', type=int, default=25, help='Num episodes for policy benchmark.')
     argp.add_argument('--eval-interval', type=int, default=100_000, help='Policy benchmark frequency.')
     argp.add_argument('--target-type', type=str, choices=('hard', 'soft'), default='hard', help='Target network update type.')
     argp.add_argument('--hard-target-steps', type=int, default=200, help='Steps between hard target network updates.')

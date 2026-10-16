@@ -1,0 +1,39 @@
+[project]
+name = "staq"
+version = "0.1.0"
+description = "StaQ: a Finite Memory Approach to Discrete Action Policy Mirror Descent (RLC 2026)"
+readme = "README.md"
+requires-python = ">=3.10,<3.12"
+dependencies = [
+    "torch>=2.4.0",
+    "numpy==1.26.4",
+    "scipy",
+    "wandb",
+    "matplotlib",
+    "tensorboard",
+    "tqdm",
+    "gymnasium[box2d]==0.29.1",  # box2d for LunarLander-v2
+    "minatar==1.0.15",
+]
+
+[project.optional-dependencies]
+# baselines/
+baselines = [
+    "stable-baselines3==2.3.2",
+    "rich==13.8.0",  # SB3's progress bar (with tqdm)
+    "sb3-contrib==2.3.0",
+    "rlberry==0.7.3",
+    "rlberry-research @ git+https://github.com/rlberry-py/rlberry-research@4b1c8bab1c6421225cda77686a03a13a33c657a9",
+    "rlberry-scool @ git+https://github.com/rlberry-py/rlberry-scool@eae8e75f649890c57f8ce91aef8b46a370834be7",
+]
+
+[dependency-groups]
+dev = ["pytest"]
+
+[tool.uv]
+# A collection of scripts, not an installable package
+package = false
+
+[tool.uv.extra-build-dependencies]
+# box2d-py runs swig at build time but doesn't declare it
+box2d-py = ["swig"]

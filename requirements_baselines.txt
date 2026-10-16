@@ -1,0 +1,9 @@
+-r requirements.txt
+
+# For baselines
+stable-baselines3==2.3.2
+rich==13.8.0  # SB3's progress bar (with tqdm)
+sb3-contrib==2.3.0
+rlberry==0.7.3
+rlberry-research@git+https://github.com/rlberry-py/rlberry-research@4b1c8bab1c6421225cda77686a03a13a33c657a9
+rlberry-scool@git+https://github.com/rlberry-py/rlberry-scool@eae8e75f649890c57f8ce91aef8b46a370834be7

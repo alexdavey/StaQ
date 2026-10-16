@@ -59,10 +59,12 @@ MinAtar/SpaceInvaders-v1
 To cite the paper and/or this repository:
 
 ```bibtex
-@inproceedings{davey2026staq,
-  title     = {StaQ: a Finite Memory Approach to Discrete Action Policy Mirror Descent},
-  author    = {Alex Davey and Alena Shilova and Brahim Driss and Riad Akrour},
-  booktitle = {Proceedings of the Reinforcement Learning Conference (RLC)},
-  year      = {2026}
+@article{davey2026staq,
+    title={StaQ: a Finite Memory Approach to Discrete Action Policy Mirror Descent},
+    author={Alex Davey and Alena Shilova and Brahim Driss and Riad Akrour},
+    journal={Reinforcement Learning Journal},
+    volume={7},
+    pages={},
+    year={2026}
 }
 ```
